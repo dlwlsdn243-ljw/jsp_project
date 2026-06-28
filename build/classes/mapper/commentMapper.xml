@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <!-- namespace : mapper DAO를 연결하기 위한 이름 -->
+  <mapper namespace="commnetMapper">
+  		<!-- SQL 구문 작성 -->
+	    <insert id="post">
+	    	insert into comment(bno, writer, contents)  values (#{bno}, #{writer}, #{contents})
+	    </insert>
+	    
+		<select id="list" resultType="domain.Comment">
+	  		select * from comment where bno = #{bno}
+	  	</select>
+	  	
+	  	<update id="update">
+	  		update comment set contents = #{contents} where cno = #{cno}
+	  	</update>
+	  	
+		<delete id="del">
+			delete from comment where cno = #{cno}
+		</delete>
+  		
+  </mapper>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <!-- namespace : mapper DAO를 연결하기 위한 이름 -->
+  <mapper namespace="userMapper">
+  		<!-- SQL 구문 작성 -->
+  		<insert id="add" parameterType="domain.User">
+  			insert into user(id, pw, email, phone) values(#{id}, #{pw}, #{email}, #{phone})
+  		</insert>
+  		
+	  	<select id="login" resultType="domain.User">
+	  		select * from user where id = #{id} and pw = #{pw}
+	  	</select>
+	  	
+		<update id="lastLogin">
+	  		update user set lastlogin = now() where id = #{id}
+	  	</update>
+	  	
+	  	<update id="update">
+	  		update user set pw=#{pw}, email=#{email}, phone=#{phone}, moddate=now() where id=#{id}
+	  	</update>
+	  	
+		<delete id="del">
+	  		delete from user where id = #{id}  		
+	  	</delete>
+	  	
+	  	
+  </mapper>

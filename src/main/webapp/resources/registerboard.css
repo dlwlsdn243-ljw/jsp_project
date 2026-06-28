@@ -1,0 +1,66 @@
+@charset "UTF-8";
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+.container{
+            width:650px;
+            margin:60px auto;
+            background:white;
+            padding:40px;
+            border-radius:10px;
+        }
+
+h1{
+    text-align:center;
+    color:#333;
+    margin-bottom:40px;
+}
+
+.form-group{
+	margin-bottom: 20px
+}
+
+label{
+	display: block;
+	font-weight: bold;
+	margin-bottom: 8px;
+	color: #444
+}
+
+input[type=text],
+  textarea{
+      width:100%;
+      padding:12px;
+      border:1px solid #ccc;
+      border-radius:6px;
+      font-size:15px;
+  }
+
+
+textarea{
+    resize:none;
+}
+
+input[type=file]{
+    margin-top:5px;
+}
+
+.btn{
+    text-align:center;
+    margin-top:30px;
+}
+
+button{
+    width:120px;
+    padding:10px;
+    border:none;
+    border-radius:6px;
+    font-size:16px;
+    cursor:pointer;
+    margin:0 8px;
+    transition:.3s;
+}

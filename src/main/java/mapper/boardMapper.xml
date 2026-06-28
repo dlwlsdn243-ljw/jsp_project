@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <!-- namespace : mapper DAO를 연결하기 위한 이름 -->
+  <mapper namespace="boardMapper">
+  		<!-- SQL 구문 작성 -->
+  		<insert id="add" parameterType="domain.Board">
+  			insert into board(title, writer, contents, imagefile) values(#{title}, #{writer}, #{contents}, #{imagefile})
+  		</insert>
+  		
+	  	<select id="list" resultType="domain.Board">
+			select * from board order by bno desc limit #{pageIndex},10
+		</select>
+		
+		<select id="detail" resultType="domain.Board">
+			select * from board where bno = #{bno}
+		</select>
+		
+		<select id="modify" resultType="domain.Board">
+			select * from board where bno = #{bno}
+		</select>
+		
+		<update id="update">
+			update board set title = #{title}, contents= #{contents}, moddate=now(), imagefile = #{imagefile} where bno = #{bno}
+		</update>
+		
+		<delete id="del">
+			delete from board where bno = #{bno}
+		</delete>
+		
+		<select id="cnt" resultType="int">
+			select count(bno) from board
+			<include refid="search"></include>
+		</select>
+		
+		<!-- SQL은 메서드처럼 조각으로 별도 설정해놓을 수 있음. / 필요시 호출 가능 -->
+		<sql id="search">
+			<if test="type != null">
+				<trim prefix="where (" suffix=")" suffixOverrides="or">
+					<foreach collection="typeToArray" item="type">
+						<trim suffix="or">
+							<choose>
+								<when test="type.equals('t'.toString())">
+									title like concat('%', #{keyword}, '%')
+								</when>
+								<when test="type.equals('w'.toString())">
+									writer like concat('%', #{keyword},'%')
+								</when>
+								<when test="type.equals('c'.toString())">
+									contents like concat('%', #{keyword},'%')
+								</when>
+							</choose>
+						</trim>			
+					</foreach>
+				</trim>
+			</if>
+		</sql>
+  </mapper>
