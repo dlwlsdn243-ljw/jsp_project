@@ -7,7 +7,7 @@
 }
 
 .container{
-            width:650px;
+            width:900px;
             margin:60px auto;
             background:white;
             padding:40px;
@@ -20,48 +20,50 @@ h1{
     margin-bottom:40px;
 }
 
-.form-group{
-	margin-bottom: 20px
+.image-box{
+    text-align:center;
+    margin-bottom:30px;
 }
 
-label{
-	display: block;
-	font-weight: bold;
-	margin-bottom: 8px;
-	color: #444
+.image-box img{
+    max-width:500px;
+    width:100%;
+    border-radius:10px;
+    border:1px solid #ddd;
 }
 
-input[type=text],
-  textarea{
-      width:100%;
-      padding:12px;
-      border:1px solid #ccc;
-      border-radius:6px;
-      font-size:15px;
-  }
-
-
-textarea{
-    resize:none;
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-bottom:30px;
 }
 
-input[type=file]{
-    margin-top:5px;
+th{
+    width:180px;
+    background:#4CAF50;
+    color:white;
+    padding:15px;
+}
+
+td{
+    padding:15px;
+    border:1px solid #ddd;
 }
 
 .btn{
     text-align:center;
-    margin-top:30px;
+    margin-bottom:40px;
 }
 
-button{
+.btn button{
     width:120px;
     padding:10px;
+    margin:0 8px;
     border:none;
     border-radius:6px;
-    font-size:16px;
     cursor:pointer;
-    margin:0 8px;
+    color:white;
+    font-size:15px;
     transition:.3s;
     background:#4CAF50;
     color:white;

@@ -24,7 +24,7 @@ import service.CommentService;
 import service.CommentServiceImpl;
 
 
-@WebServlet("/cmt*/")
+@WebServlet("/cmt/*")
 public class CommentController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final Logger log = LoggerFactory.getLogger(CommentController.class);

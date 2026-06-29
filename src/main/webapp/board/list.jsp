@@ -7,52 +7,61 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Insert title here</title>
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/list.css">
 	</head>
 	<body>
-		<h1>리스트 페이지</h1>
-		
-		<div>
-			<form action="/brd/list" method="get">
-				<select name="type">
-					<option value="t">제목</option>
-					<option value="w">작성자</option>
-					<option value="c">내용</option>
-					<option value="a">전부</option>
-				</select>
-				
-				<input type="text" name="keyword" placeholder="검색...">
-				
-				<button type="submit">검색</button>
-				
-				<span>검색결과 : ${ph.totalCount}개</span>
-			</form>
+		<div class="container">
+			<h1>리스트 페이지</h1>
 			
-			<table border=1>
-				<thead>
-					<tr>
-						<th>게시글 수</th>
-						<th>제목</th>
-						<th>작성자</th>
-						<th>작성일</th>
-					</tr>
-				</thead>
+			<div class="top-menu">
+		        <a href="/">홈</a>
+		        <a href="/brd/register">글쓰기</a>
+		    </div>
+			
+			<div>
+				<form action="/brd/list" method="get">
+					<select name="type">
+						<option value="t">제목</option>
+						<option value="w">작성자</option>
+						<option value="c">내용</option>
+						<option value="a">전부</option>
+					</select>
+					
+					<input type="text" name="keyword" placeholder="검색...">
+					
+					<button type="submit">검색</button>
+					
+					<span>검색결과 : ${ph.totalCount}개</span>
+				</form>
 				
-				<tbody>
-					<c:forEach items="${list }" var="board">
+				<table border=1>
+					<thead>
 						<tr>
-							<td>${board.bno }</td>
-							<td>
-								<a href="/brd/detail?bno=${board.bno }">
-									<img alt="" src="/_fileUpload/th_${board.imagefile }">
-									${board.title }
-								</a>
-							</td>
-							<td>${board.writer }</td>
-							<td>${regdate }</td>
+							<th>게시글 수</th>
+							<th>제목</th>
+							<th>작성자</th>
+							<th>작성일</th>
 						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
+					</thead>
+					
+					<tbody>
+						<c:forEach items="${list }" var="board">
+							<tr>
+								<td>${board.bno }</td>
+								<td>
+									<a href="/brd/detail?bno=${board.bno }">
+										<img alt="" src="/_fileUpload/th_${board.imagefile }">
+										${board.title }
+									</a>
+								</td>
+								<td>${board.writer }</td>
+								<td>${regdate }</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
+		</div>
 			
 		<div>
 			<!-- 이전  11 ~ 20-->
@@ -69,7 +78,6 @@
 			<c:if test="${ph.next }">
 				<a href="/brd/list?pageNo=${ph.endPage+1 }&qty=${10 }&type=${ph.pagingVO.type}&keyword=${ph.pagingVO.keyword}"> > </a>
 			</c:if>
-		</div>
 		</div>
 	</body>
 </html>
